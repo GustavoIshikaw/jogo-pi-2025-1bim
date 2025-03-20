@@ -1,0 +1,61 @@
+Documentação do Backend
+1. Introdução
+Esta documentação descreve a abordagem atual para o armazenamento e gerenciamento de dados relacionados ao jogo, como moedas coletadas e recordes de pontuação. Atualmente, o projeto utiliza o localStorage para persistir esses dados no lado do cliente, permitindo uma prototipagem rápida e funcionalidade básica. Em versões futuras, o sistema será migrado para uma arquitetura de backend real utilizando Node.js e MongoDB, visando maior segurança, escalabilidade e integridade dos dados.
+
+2. Estrutura Atual
+2.1. LocalStorage
+Atualmente, o jogo armazena informações essenciais (como quantidade de moedas e recorde de pontuação) utilizando o localStorage do navegador. Essa abordagem permite:
+
+Persistência simples dos dados entre sessões.
+Implementação rápida sem a necessidade de configurar um servidor.
+Fácil acesso e modificação dos dados diretamente pelo código JavaScript do front-end.
+2.2. Funcionamento
+No código, as operações de armazenamento e recuperação dos dados ocorrem da seguinte forma:
+
+Salvar Dados: Ao coletar moedas ou atualizar a pontuação, o jogo atualiza o valor correspondente no localStorage.
+Recuperar Dados: Ao iniciar o jogo, os dados armazenados (por exemplo, o recorde) são recuperados para exibição e validação.
+
+Exemplo de uso do localStorage:
+
+javascript
+Copiar
+Editar
+// Salvando o recorde no localStorage
+localStorage.setItem('highScore', JSON.stringify(highScore));
+
+// Recuperando o recorde do localStorage
+let highScore = JSON.parse(localStorage.getItem('highScore')) || 0;
+3. Limitações da Abordagem Atual
+Embora o uso do localStorage seja adequado para um protótipo funcional, ele possui as seguintes limitações:
+
+Escalabilidade: O armazenamento é limitado ao dispositivo do usuário, não sendo viável para aplicações multiusuário ou de larga escala.
+Segurança: Os dados ficam acessíveis ao usuário, sem mecanismos robustos de segurança.
+Integração: Não permite integração com outros serviços ou a manipulação centralizada de dados.
+4. Plano para Migração para Backend Real com Node.js e MongoDB
+4.1. Objetivos da Migração
+Persistência Centralizada: Armazenar os dados em um banco de dados central (MongoDB) para acesso seguro e consistente.
+Escalabilidade: Permitir o suporte a múltiplos usuários e dispositivos, com a possibilidade de expandir as funcionalidades.
+Segurança: Implementar autenticação, autorização e outras práticas de segurança para proteger os dados.
+4.2. Etapas Previstas
+Configuração do Servidor Node.js:
+
+Utilização do framework Express para criar APIs RESTful.
+Criação de endpoints para operações de criação, leitura, atualização e deleção (CRUD) dos dados do jogo.
+Integração com MongoDB:
+
+Configuração do MongoDB (local ou na nuvem) para armazenar informações dos jogadores, moedas, pontuações, etc.
+Uso de uma biblioteca como Mongoose para modelagem e interação com o banco de dados.
+Integração com o Front-End:
+
+Atualização do código do jogo para enviar e receber dados através das APIs desenvolvidas.
+Gerenciamento de sessão e autenticação para identificar os usuários.
+Testes e Validação:
+
+Realização de testes de integração para garantir a correta comunicação entre o front-end e o backend.
+Monitoramento de performance e segurança.
+4.3. Benefícios da Migração
+Segurança e Confiabilidade: Dados armazenados de forma centralizada e protegidos contra alterações indevidas.
+Melhor Experiência do Usuário: Possibilidade de manter o histórico e pontuações de forma consistente, mesmo em diferentes dispositivos.
+Facilidade de Manutenção e Evolução: Estrutura modular que permite adicionar novas funcionalidades e realizar atualizações sem impactar o sistema como um todo.
+5. Conclusão
+Atualmente, o backend do jogo é representado pelo uso do localStorage, atendendo aos requisitos básicos do protótipo funcional. Este método possibilitou uma rápida implementação e validação das regras de jogo, armazenamento de moedas e pontuação. Contudo, considerando as limitações dessa abordagem, há um plano bem definido para migrar para uma solução de backend completa utilizando Node.js e MongoDB. Essa evolução garantirá maior segurança, escalabilidade e uma melhor experiência para os usuários.
