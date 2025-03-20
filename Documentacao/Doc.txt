@@ -57,5 +57,6 @@ Monitoramento de performance e segurança.
 Segurança e Confiabilidade: Dados armazenados de forma centralizada e protegidos contra alterações indevidas.
 Melhor Experiência do Usuário: Possibilidade de manter o histórico e pontuações de forma consistente, mesmo em diferentes dispositivos.
 Facilidade de Manutenção e Evolução: Estrutura modular que permite adicionar novas funcionalidades e realizar atualizações sem impactar o sistema como um todo.
+
 5. Conclusão
 Atualmente, o backend do jogo é representado pelo uso do localStorage, atendendo aos requisitos básicos do protótipo funcional. Este método possibilitou uma rápida implementação e validação das regras de jogo, armazenamento de moedas e pontuação. Contudo, considerando as limitações dessa abordagem, há um plano bem definido para migrar para uma solução de backend completa utilizando Node.js e MongoDB. Essa evolução garantirá maior segurança, escalabilidade e uma melhor experiência para os usuários.
